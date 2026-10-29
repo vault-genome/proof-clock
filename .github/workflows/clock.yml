@@ -162,7 +162,7 @@ jobs:
         run: |
           python3 tools/counter.py --records records --out .
           python3 tools/publish.py --repo "$GITHUB_REPOSITORY" --branch main --headline "$HEADLINE" \
-            --body "run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$RECORD" latest.json index.json
+            --body "run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$RECORD" latest.json index.json badge.json
 
       - name: the raw transcript, for a look (the account's names replaced; 14 days)
         if: always() && steps.record.outcome == 'success'
