@@ -369,7 +369,12 @@ def main():
     cosign_txt = read_text(os.path.join(rec, "verify", "cosign.txt")) if rec else ""
     slsa_txt = read_text(os.path.join(rec, "verify", "slsa.txt")) if rec else ""
     checks_txt = read_text(os.path.join(rec, "verify", "checksums.txt")) if rec else ""
-    tools = kv(os.path.join(rec, "verify", "tools.txt")) if rec else {}
+    tools = {}
+    if rec:  # "cosign: v2.6.5 (/path)" lines: the version only
+        for line in read_text(os.path.join(rec, "verify", "tools.txt")).splitlines():
+            m = re.match(r"^(cosign|slsa-verifier|gcloud): (.*)$", line)
+            if m:
+                tools[m.group(1)] = re.sub(r" \(.*\)$", "", m.group(2)).strip()
     guest_hashes_ok = None
     if have_guest:
         guest_hashes_ok = True
@@ -463,7 +468,7 @@ def main():
             "url": run_url, "event": env.get("GITHUB_EVENT_NAME"), "runner_image": env.get("ImageOS"),
             "runner_image_version": env.get("ImageVersion"), "started_at": iso(started), "finished_at": iso(dt.datetime.now(dt.timezone.utc)),
             "core_commit": a.core_commit, "deploy_rc": a.rc,
-            "tools": {k: tools.get(k) for k in ("cosign", "slsa-verifier", "gcloud") if tools.get(k)} or None,
+            "tools": tools or None,
         },
         "files": {},
     }
