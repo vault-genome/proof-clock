@@ -1,0 +1,69 @@
+{
+  "schema": "vault-genome/proof-clock-record/v1",
+  "date": "2026-10-29",
+  "stamp": "20261029T150056Z",
+  "platform": "sev-snp",
+  "status": "failed",
+  "reason": "gcloud has no credentials here. In your own Cloud Shell: allow the Authorize prompt when it appears, then try again. In a temporary Cloud Shell session, or anywhere else: run 'gcloud auth login' first",
+  "proven_at": null,
+  "release": {
+    "tag": "v0.13.0",
+    "commit": null,
+    "checksums_list_sha256": null,
+    "cosign": null,
+    "checksums_ok": null,
+    "slsa_passed": null,
+    "tag_signature": null,
+    "guest_checksums_ok": null
+  },
+  "cloud": {
+    "provider": "gcp",
+    "zone": null,
+    "region": null,
+    "machine": null,
+    "instance": null
+  },
+  "chip": null,
+  "measurement": null,
+  "measurements_equal": null,
+  "sealer": {
+    "vault": null,
+    "worker": null,
+    "requested": null
+  },
+  "sealed_files": null,
+  "settled_boot": null,
+  "gate": null,
+  "audit": null,
+  "timing": {
+    "deploy_started_at": "2026-10-29T15:00:56Z",
+    "guest_boot_at": null,
+    "guest_finished_at": null,
+    "button_to_record_s": null,
+    "boot_to_verdict_s": null,
+    "guest_elapsed_s": null,
+    "provision_s": null,
+    "job_s": null,
+    "sagvd_ready_after": null,
+    "session_opened_after": null
+  },
+  "guest_blob": null,
+  "run": {
+    "repository": "vault-genome/proof-clock",
+    "id": "40897205427",
+    "attempt": "1",
+    "url": "https://github.com/vault-genome/proof-clock/actions/runs/40897205427",
+    "event": "workflow_dispatch",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20261026.354.1",
+    "started_at": "2026-10-29T15:00:56Z",
+    "finished_at": "2026-10-29T15:01:10Z",
+    "core_commit": "4d62d272dc708c9fe87f88401ac15aafe41a7095",
+    "deploy_rc": 1,
+    "tools": null
+  },
+  "files": {
+    "deploy.txt": "9b18a5527f47ddd52df319ae399fdd6eb7e7a951ff56788cd55f16e594636c2d"
+  },
+  "headline": "2026-10-29 sev-snp: failed v0.13.0 \u2014 gcloud has no credentials here. In your own Cloud Shell: allow the Authorize pro"
+}

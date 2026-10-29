@@ -1,24 +1,53 @@
 {
   "schema": "vault-genome/proof-clock/v1",
-  "generated_at": "2026-10-29T14:56:23Z",
+  "generated_at": "2026-10-29T15:01:13Z",
   "last_proven": null,
-  "last_run": null,
+  "last_run": {
+    "date": "2026-10-29",
+    "stamp": "20261029T150056Z",
+    "platform": "sev-snp",
+    "status": "failed",
+    "reason": "gcloud has no credentials here. In your own Cloud Shell: allow the Authorize prompt when it appears, then try again. In a temporary Cloud Shell session, or anywhere else: run 'gcloud auth login' first",
+    "release": "v0.13.0",
+    "zone": null,
+    "machine": null,
+    "chip": "AMD SEV-SNP",
+    "firmware": null,
+    "measurement": null,
+    "gate": null,
+    "fixtures": null,
+    "n_exact": null,
+    "button_to_record_s": null,
+    "proven_at": null,
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40897205427",
+    "path": "records/2026-10-29/20261029T150056Z-sev-snp"
+  },
   "streak_days": 0,
   "days_proven": 0,
   "runs": {
-    "total": 0,
+    "total": 1,
     "proven": 0,
     "not-exact": 0,
     "refused": 0,
     "no-capacity": 0,
-    "failed": 0
+    "failed": 1
   },
-  "by_platform": {},
+  "by_platform": {
+    "sev-snp": {
+      "runs": 1,
+      "proven": 0,
+      "last_proven_at": null,
+      "chips_seen": 0,
+      "measurements_seen": 0,
+      "firmware_seen": [],
+      "releases_proven": []
+    }
+  },
   "releases_proven": [],
   "badge": {
     "schemaVersion": 1,
     "label": "proof clock",
-    "color": "lightgrey",
-    "message": "no run yet"
+    "color": "red",
+    "message": "failed 2026-10-29 on AMD SEV-SNP"
   }
 }

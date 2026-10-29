@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "date": "2026-10-29",
+    "stamp": "20261029T150056Z",
+    "platform": "sev-snp",
+    "status": "failed",
+    "reason": "gcloud has no credentials here. In your own Cloud Shell: allow the Authorize prompt when it appears, then try again. In a temporary Cloud Shell session, or anywhere else: run 'gcloud auth login' first",
+    "release": "v0.13.0",
+    "zone": null,
+    "machine": null,
+    "chip": "AMD SEV-SNP",
+    "firmware": null,
+    "measurement": null,
+    "gate": null,
+    "fixtures": null,
+    "n_exact": null,
+    "button_to_record_s": null,
+    "proven_at": null,
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40897205427",
+    "path": "records/2026-10-29/20261029T150056Z-sev-snp"
+  }
+]
