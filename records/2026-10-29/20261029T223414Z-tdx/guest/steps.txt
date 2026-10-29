@@ -1,0 +1,39 @@
+platform=tdx sealer=auto settled_boot=1
+== packages
+== configfs-tsm: the hardware's reports
+== the release v0.14.0 from GitHub, held to the signed checksums list
+checksums_ok=5 of 5 downloaded files on the signed list
+== the worker runtime from the hash-pinned locks
+== a base model for the first genome: the tiny one the reference deployment gates
+== installed; rebooting once so the key files are sealed on a settled boot (the vTPM's PCRs)
+settled boot: 3 boots on record
+pcrphase=inactive
+absent
+== acpctl provision: keys, configurations, identities and pins, the key files sealed to this host
+provision exit=0
+provider=auto peer=gcp-tdx sealer=auto
+vault_measurement=6f13cd51842222020420284862e2d5345057860ca445c48b0d50663374e41800abca08e5e4a05663d01647bfc2918a55
+worker_measurement=6f13cd51842222020420284862e2d5345057860ca445c48b0d50663374e41800abca08e5e4a05663d01647bfc2918a55
+vault_sealer=tpm2 worker_sealer=tpm2
+sealed_sagvd=keys.authority_signing.seed_path,keys.session_sealing.material_path,keys.audit_signing.seed_path,vault.tls.server_key,http_api.bearer_token_file
+sealed_worker=keys.worker_signing.seed_path,keys.session_sealing.material_path,vault.tls.client_key
+amd_cert_chain=None
+audit_kid=sagvd-audit-demo authority_kid=sagvd-authority-demo
+== the first genome: a LoRA fine-tune by vg_genome, sealed by acpctl into the genome directory
+finetune exit=0
+seal exit=0
+key_id=genome-cf7f2e2ef4f1-g0-e58e4291e8bc
+== the daemons as systemd services
+sagvd_ready_after=3s
+session_opened_after=1s
+== the gate job over the Return Path
+job_id=836031bc66f9651bf0a08645477e1071
+job_status=succeeded
+job_wait=4s
+gate_level=EXACT door=pinned replay rung=0 fixtures=6 n_exact=6 max_abs_err=0 signer=sagvd-authority-demo
+== metrics; then the audit log verified under the operator's key with both services paused, and the hardware as the verifier read it
+audit verify exit=0
+restart_sagvd_ready_after=3s
+restart_session_opened_after=0s
+peer trust domain tdx mrtd=f21e6b48743fe14c2d090078ca1197f09ae4c99438677f2c79901ef80e2aeefe2f9a7eb6e3eb3b5047c4f1511731e5d3 rtmr0=14c3ab8f982e023de8214102f9827f1eef6f65111529aab6ef6dbfc85fabef9c0f27045c1db2ba74efaae1cc4317e054 rtmr1=c9a5e3f38d22e52a2f443caa7a2371edf0119ff6ddf09f38ce64b7194105c0ec97b1088a684e7829975bcb00ae90d422 rtmr2=1091ae683b2fdddff9e0399221c5c3fad8e891ba6fe69bf56247d2974a73b389c9e5ce7e1a19433ff27747f8c805fdc2 rtmr3=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 measurement=6f13cd51842222020420284862e2d5345057860ca445c48b0d50663374e41800abca08e5e4a05663d01647bfc2918a55 fmspc=00806f050000 pcs_documents=tdx-qe-identity.issuer-chain.pem,tdx-qe-identity.json,tdx-tcb-00806f050000.issuer-chain.pem,tdx-tcb-00806f050000.json
+elapsed_seconds=30.0
