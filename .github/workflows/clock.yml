@@ -1,0 +1,196 @@
+# Copyright (C) 2026 Serhii Nikolaichuk, Rodion Sorokin
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# The proof clock. Twice a day this workflow does what a stranger does with
+# the one-button deployment of vault-genome/vaultgenome-core: clones the
+# repository, runs deploy/gcp/deploy.sh against the latest release on a
+# real Confidential VM (AMD SEV-SNP at 06:00 UTC, Intel TDX at 18:00 UTC),
+# reads the guest's record, decides the status itself — proven only when
+# the gate came back EXACT and the audit log replayed ok — removes the VM,
+# and commits the record and the counter to this repository.
+#
+# Google Cloud trusts this run's OIDC token (Workload Identity Federation,
+# tools/gcp-setup.sh): no key anywhere. The three names it needs are
+# repository variables: GCP_PROJECT, GCP_SERVICE_ACCOUNT, GCP_WIF_PROVIDER.
+name: clock
+
+on:
+  schedule:
+    - cron: "0 6 * * *"    # AMD SEV-SNP (n2d-standard-4)
+    - cron: "0 18 * * *"   # Intel TDX (c3-standard-4)
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: "sev-snp or tdx"
+        type: choice
+        options: [sev-snp, tdx]
+        default: sev-snp
+      tag:
+        description: "release tag to prove (empty: the latest release)"
+        type: string
+        default: ""
+
+permissions: {}
+
+concurrency:
+  group: clock
+  cancel-in-progress: false
+
+jobs:
+  prove:
+    name: prove the release on a real confidential VM
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    permissions:
+      id-token: write    # the OIDC token Google Cloud trusts
+      contents: write    # the record, committed to this repository
+      issues: write      # a run that did not prove opens an issue
+    env:
+      GCP_PROJECT: ${{ vars.GCP_PROJECT }}
+      GCP_SERVICE_ACCOUNT: ${{ vars.GCP_SERVICE_ACCOUNT }}
+      GCP_WIF_PROVIDER: ${{ vars.GCP_WIF_PROVIDER }}
+      CORE_REPO: vault-genome/vaultgenome-core
+    steps:
+      - name: this repository (the tools)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: which platform, which release
+        id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          IN_PLATFORM: ${{ inputs.platform }}
+          IN_TAG: ${{ inputs.tag }}
+        run: |
+          if [ "$EVENT" = schedule ]; then
+            case "$SCHEDULE" in "0 18 * * *") platform=tdx;; *) platform=sev-snp;; esac
+          else
+            platform="${IN_PLATFORM:-sev-snp}"
+          fi
+          tag="$IN_TAG"
+          [ -n "$tag" ] || tag="$(gh release view --repo "$CORE_REPO" --json tagName --jq .tagName)"
+          case "$tag" in v[0-9]*.[0-9]*.[0-9]*) ;; *) echo "not a release tag: $tag" >&2; exit 1;; esac
+          [ -n "$GCP_PROJECT" ] && [ -n "$GCP_SERVICE_ACCOUNT" ] && [ -n "$GCP_WIF_PROVIDER" ] \
+            || { echo "the repository variables GCP_PROJECT, GCP_SERVICE_ACCOUNT and GCP_WIF_PROVIDER are needed (tools/gcp-setup.sh prints them)" >&2; exit 1; }
+          name="clock-$(date -u +%Y%m%d%H%M%S)"
+          started="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          { echo "platform=$platform"; echo "tag=$tag"; echo "name=$name"; echo "started=$started"; } >> "$GITHUB_OUTPUT"
+          echo "proof clock: $tag on $platform as $name, started $started"
+
+      - name: the button, as a stranger finds it (vaultgenome-core main)
+        id: core
+        run: |
+          git clone --quiet --depth 1 "https://github.com/$CORE_REPO" core
+          echo "commit=$(git -C core rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          git -C core log -1 --format='core main %H %cI'
+
+      - name: Google Cloud, by this run's OIDC token
+        id: auth
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - name: deploy.sh — the release verified, the VM created, the guest's record awaited
+        id: deploy
+        env:
+          PLATFORM: ${{ steps.plan.outputs.platform }}
+          TAG: ${{ steps.plan.outputs.tag }}
+          NAME: ${{ steps.plan.outputs.name }}
+        run: |
+          # the pipeline's status is deploy.sh's (pipefail); it is read, not
+          # left to -e, so that the record below is written whatever happened
+          set +e
+          core/deploy/gcp/deploy.sh --project "$GCP_PROJECT" --name "$NAME" --platform "$PLATFORM" --tag "$TAG" --yes 2>&1 | tee deploy.out
+          rc=${PIPESTATUS[0]}
+          set -e
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          echo "deploy.sh exit $rc"
+
+      - name: the record — the status decided here, the account's name replaced
+        id: record
+        if: always() && steps.plan.outcome == 'success'
+        env:
+          PLATFORM: ${{ steps.plan.outputs.platform }}
+          TAG: ${{ steps.plan.outputs.tag }}
+          STARTED: ${{ steps.plan.outputs.started }}
+          RC: ${{ steps.deploy.outputs.rc }}
+          CORE_COMMIT: ${{ steps.core.outputs.commit }}
+        run: |
+          project_number="$(printf '%s' "$GCP_WIF_PROVIDER" | cut -d/ -f2)"
+          python3 tools/record.py --core core --deploy-out deploy.out --rc "${RC:-1}" --platform "$PLATFORM" --tag "$TAG" \
+            --started "$STARTED" --out-root records --core-commit "${CORE_COMMIT:-}" --raw-copy raw \
+            --scrub "account=$GCP_SERVICE_ACCOUNT" --scrub "project-number=$project_number" | tee record.out
+          grep -E '^(status|record|headline)=' record.out >> "$GITHUB_OUTPUT"
+          rec="$(sed -n 's/^record=//p' record.out)"
+          { echo "## $(sed -n 's/^headline=//p' record.out)"; echo; echo '```'; sed -n '/^PROVEN/,$p' "$rec/deploy.txt" | head -14; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: the VM removed, always
+        if: always() && steps.plan.outcome == 'success'
+        env:
+          NAME: ${{ steps.plan.outputs.name }}
+        run: |
+          if [ "${CLOUDSDK_AUTH_CREDENTIAL_FILE_OVERRIDE:-}" = "" ] && [ "${GOOGLE_GHA_CREDS_PATH:-}" = "" ]; then
+            echo "no cloud credentials in this run: no VM was created"; exit 0
+          fi
+          if gcloud compute instances list --project "$GCP_PROJECT" --filter="name=$NAME" --format='value(name)' | grep -q .; then
+            core/deploy/gcp/destroy.sh --project "$GCP_PROJECT" --name "$NAME" --yes
+          else
+            echo "no VM named $NAME exists (none was created)"
+          fi
+          # a janitor for a run that died without reaching this step: clock-* VMs older than 90 minutes
+          now=$(date -u +%s)
+          gcloud compute instances list --project "$GCP_PROJECT" --filter="name~^clock-" --format='value(name,zone.basename(),creationTimestamp)' \
+          | while read -r n z ts; do
+              [ -n "$n" ] || continue
+              age=$(( now - $(date -u -d "$ts" +%s) ))
+              if [ "$age" -gt 5400 ]; then echo "janitor: $n ($z) is ${age}s old; removing"; gcloud compute instances delete "$n" --project "$GCP_PROJECT" --zone "$z" --quiet; fi
+            done
+          if gcloud compute instances list --project "$GCP_PROJECT" --filter="name=$NAME" --format='value(name)' | grep -q .; then
+            echo "the VM $NAME still exists" >&2; exit 1
+          fi
+
+      - name: the counter and the publication (a commit made and signed by GitHub for this run)
+        if: always() && steps.record.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RECORD: ${{ steps.record.outputs.record }}
+          HEADLINE: ${{ steps.record.outputs.headline }}
+        run: |
+          python3 tools/counter.py --records records --out .
+          python3 tools/publish.py --repo "$GITHUB_REPOSITORY" --branch main --headline "$HEADLINE" \
+            --body "run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" "$RECORD" latest.json index.json
+
+      - name: the raw transcript, for a look (the account's names replaced; 14 days)
+        if: always() && steps.record.outcome == 'success'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: raw-${{ steps.plan.outputs.name }}
+          path: raw
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: a run that did not prove opens an issue
+        if: always() && steps.record.outcome == 'success' && steps.record.outputs.status != 'proven'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          STATUS: ${{ steps.record.outputs.status }}
+          HEADLINE: ${{ steps.record.outputs.headline }}
+          RECORD: ${{ steps.record.outputs.record }}
+          PLATFORM: ${{ steps.plan.outputs.platform }}
+        run: |
+          # shellcheck disable=SC2016  # the backticks are Markdown for the issue, not a command
+          printf '%s\n\nRecord: `%s` - run: %s/%s/actions/runs/%s (the raw transcript is its artifact, 14 days).\n' \
+            "$HEADLINE" "$RECORD" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > issue.md
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "clock: $PLATFORM $STATUS on $(date -u +%F)" --body-file issue.md
+
+      - name: the job's status is the record's
+        if: always()
+        env:
+          STATUS: ${{ steps.record.outputs.status }}
+        run: |
+          echo "status: ${STATUS:-none}"
+          test "$STATUS" = proven

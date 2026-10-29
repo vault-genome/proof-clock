@@ -1,0 +1,6 @@
+# a local test of the tools leaves these behind; the published records live under records/
+/core/
+/raw/
+/deploy.out
+/record.out
+__pycache__/

@@ -1,0 +1,24 @@
+{
+  "schema": "vault-genome/proof-clock/v1",
+  "generated_at": "2026-10-29T14:56:23Z",
+  "last_proven": null,
+  "last_run": null,
+  "streak_days": 0,
+  "days_proven": 0,
+  "runs": {
+    "total": 0,
+    "proven": 0,
+    "not-exact": 0,
+    "refused": 0,
+    "no-capacity": 0,
+    "failed": 0
+  },
+  "by_platform": {},
+  "releases_proven": [],
+  "badge": {
+    "schemaVersion": 1,
+    "label": "proof clock",
+    "color": "lightgrey",
+    "message": "no run yet"
+  }
+}
