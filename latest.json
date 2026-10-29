@@ -1,51 +1,51 @@
 {
   "schema": "vault-genome/proof-clock/v1",
-  "generated_at": "2026-10-29T15:09:01Z",
+  "generated_at": "2026-10-29T15:16:18Z",
   "last_proven": {
     "date": "2026-10-29",
-    "stamp": "20261029T150328Z",
-    "platform": "sev-snp",
+    "stamp": "20261029T151031Z",
+    "platform": "tdx",
     "status": "proven",
     "reason": "",
     "release": "v0.13.0",
     "zone": "us-central1-c",
-    "machine": "n2d-standard-4",
-    "chip": "AMD Milan",
-    "firmware": "1.58.3",
-    "measurement": "9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf",
+    "machine": "c3-standard-4",
+    "chip": "Intel TDX",
+    "firmware": null,
+    "measurement": "6f13cd51842222020420284862e2d5345057860ca445c48b0d50663374e41800abca08e5e4a05663d01647bfc2918a55",
     "gate": "EXACT",
     "fixtures": 6,
     "n_exact": 6,
-    "button_to_record_s": 262.5,
-    "proven_at": "2026-10-29T15:07:50Z",
-    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40897601423",
-    "path": "records/2026-10-29/20261029T150328Z-sev-snp"
+    "button_to_record_s": 264.9,
+    "proven_at": "2026-10-29T15:14:55Z",
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40898771989",
+    "path": "records/2026-10-29/20261029T151031Z-tdx"
   },
   "last_run": {
     "date": "2026-10-29",
-    "stamp": "20261029T150328Z",
-    "platform": "sev-snp",
+    "stamp": "20261029T151031Z",
+    "platform": "tdx",
     "status": "proven",
     "reason": "",
     "release": "v0.13.0",
     "zone": "us-central1-c",
-    "machine": "n2d-standard-4",
-    "chip": "AMD Milan",
-    "firmware": "1.58.3",
-    "measurement": "9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf",
+    "machine": "c3-standard-4",
+    "chip": "Intel TDX",
+    "firmware": null,
+    "measurement": "6f13cd51842222020420284862e2d5345057860ca445c48b0d50663374e41800abca08e5e4a05663d01647bfc2918a55",
     "gate": "EXACT",
     "fixtures": 6,
     "n_exact": 6,
-    "button_to_record_s": 262.5,
-    "proven_at": "2026-10-29T15:07:50Z",
-    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40897601423",
-    "path": "records/2026-10-29/20261029T150328Z-sev-snp"
+    "button_to_record_s": 264.9,
+    "proven_at": "2026-10-29T15:14:55Z",
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40898771989",
+    "path": "records/2026-10-29/20261029T151031Z-tdx"
   },
   "streak_days": 1,
   "days_proven": 1,
   "runs": {
-    "total": 2,
-    "proven": 1,
+    "total": 3,
+    "proven": 2,
     "not-exact": 0,
     "refused": 0,
     "no-capacity": 0,
@@ -64,6 +64,17 @@
       "releases_proven": [
         "v0.13.0"
       ]
+    },
+    "tdx": {
+      "runs": 1,
+      "proven": 1,
+      "last_proven_at": "2026-10-29T15:14:55Z",
+      "chips_seen": 0,
+      "measurements_seen": 1,
+      "firmware_seen": [],
+      "releases_proven": [
+        "v0.13.0"
+      ]
     }
   },
   "releases_proven": [
@@ -73,6 +84,6 @@
     "schemaVersion": 1,
     "label": "proof clock",
     "color": "brightgreen",
-    "message": "proven 2026-10-29 15:07Z on AMD Milan, 262 s"
+    "message": "proven 2026-10-29 15:14Z on Intel TDX, 264 s"
   }
 }

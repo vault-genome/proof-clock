@@ -1,0 +1,7 @@
+instance=clock-20261029151013
+zone=us-central1-c
+machine=c3-standard-4
+platform=tdx
+release=v0.13.0
+sealer=auto
+captured=20261029T151031Z

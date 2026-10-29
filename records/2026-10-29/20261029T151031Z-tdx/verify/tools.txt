@@ -1,0 +1,5 @@
+release: v0.13.0
+verified at: 2026-10-29T15:10:31Z by the signed-in account on Linux x86_64
+cosign: v2.6.5 (/home/runner/work/proof-clock/proof-clock/core/deploy/gcp/.tools/cosign)
+slsa-verifier: 2.7.1 (/home/runner/work/proof-clock/proof-clock/core/deploy/gcp/.tools/slsa-verifier)
+gcloud: Google Cloud SDK 590.0.1

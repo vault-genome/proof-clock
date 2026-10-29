@@ -1,0 +1,5 @@
+sagvd: OK
+acp-compute: OK
+acpctl: OK
+acp-keygen: OK
+genome-worker-v0.13.0.tar.gz: OK

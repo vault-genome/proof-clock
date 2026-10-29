@@ -1,0 +1,8 @@
+sagvd/authority_signing_seed {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'keys.authority_signing.seed_path', 'sealed_bytes': 708}
+sagvd/audit_signing_seed {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'keys.audit_signing.seed_path', 'sealed_bytes': 708}
+sagvd/api_token {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'http_api.bearer_token_file', 'sealed_bytes': 764}
+sagvd/tls/server.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'vault.tls.server_key', 'sealed_bytes': 1080}
+shared/sealing.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'keys.session_sealing.material_path', 'sealed_bytes': 708}
+acp-compute/sealing.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'keys.session_sealing.material_path', 'sealed_bytes': 708}
+acp-compute/worker_signing_seed {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'keys.worker_signing.seed_path', 'sealed_bytes': 708}
+acp-compute/tls/client.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-tdx', 'sealer': 'tpm2', 'name': 'vault.tls.client_key', 'sealed_bytes': 1080}
