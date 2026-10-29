@@ -1,0 +1,7 @@
+instance=clock-20261029150314
+zone=us-central1-c
+machine=n2d-standard-4
+platform=sev-snp
+release=v0.13.0
+sealer=auto
+captured=20261029T150328Z

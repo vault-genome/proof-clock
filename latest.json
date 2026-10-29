@@ -1,32 +1,51 @@
 {
   "schema": "vault-genome/proof-clock/v1",
-  "generated_at": "2026-10-29T15:01:13Z",
-  "last_proven": null,
+  "generated_at": "2026-10-29T15:09:01Z",
+  "last_proven": {
+    "date": "2026-10-29",
+    "stamp": "20261029T150328Z",
+    "platform": "sev-snp",
+    "status": "proven",
+    "reason": "",
+    "release": "v0.13.0",
+    "zone": "us-central1-c",
+    "machine": "n2d-standard-4",
+    "chip": "AMD Milan",
+    "firmware": "1.58.3",
+    "measurement": "9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf",
+    "gate": "EXACT",
+    "fixtures": 6,
+    "n_exact": 6,
+    "button_to_record_s": 262.5,
+    "proven_at": "2026-10-29T15:07:50Z",
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40897601423",
+    "path": "records/2026-10-29/20261029T150328Z-sev-snp"
+  },
   "last_run": {
     "date": "2026-10-29",
-    "stamp": "20261029T150056Z",
+    "stamp": "20261029T150328Z",
     "platform": "sev-snp",
-    "status": "failed",
-    "reason": "gcloud has no credentials here. In your own Cloud Shell: allow the Authorize prompt when it appears, then try again. In a temporary Cloud Shell session, or anywhere else: run 'gcloud auth login' first",
+    "status": "proven",
+    "reason": "",
     "release": "v0.13.0",
-    "zone": null,
-    "machine": null,
-    "chip": "AMD SEV-SNP",
-    "firmware": null,
-    "measurement": null,
-    "gate": null,
-    "fixtures": null,
-    "n_exact": null,
-    "button_to_record_s": null,
-    "proven_at": null,
-    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40897205427",
-    "path": "records/2026-10-29/20261029T150056Z-sev-snp"
+    "zone": "us-central1-c",
+    "machine": "n2d-standard-4",
+    "chip": "AMD Milan",
+    "firmware": "1.58.3",
+    "measurement": "9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf",
+    "gate": "EXACT",
+    "fixtures": 6,
+    "n_exact": 6,
+    "button_to_record_s": 262.5,
+    "proven_at": "2026-10-29T15:07:50Z",
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40897601423",
+    "path": "records/2026-10-29/20261029T150328Z-sev-snp"
   },
-  "streak_days": 0,
-  "days_proven": 0,
+  "streak_days": 1,
+  "days_proven": 1,
   "runs": {
-    "total": 1,
-    "proven": 0,
+    "total": 2,
+    "proven": 1,
     "not-exact": 0,
     "refused": 0,
     "no-capacity": 0,
@@ -34,20 +53,26 @@
   },
   "by_platform": {
     "sev-snp": {
-      "runs": 1,
-      "proven": 0,
-      "last_proven_at": null,
-      "chips_seen": 0,
-      "measurements_seen": 0,
-      "firmware_seen": [],
-      "releases_proven": []
+      "runs": 2,
+      "proven": 1,
+      "last_proven_at": "2026-10-29T15:07:50Z",
+      "chips_seen": 1,
+      "measurements_seen": 1,
+      "firmware_seen": [
+        "1.58.3"
+      ],
+      "releases_proven": [
+        "v0.13.0"
+      ]
     }
   },
-  "releases_proven": [],
+  "releases_proven": [
+    "v0.13.0"
+  ],
   "badge": {
     "schemaVersion": 1,
     "label": "proof clock",
-    "color": "red",
-    "message": "failed 2026-10-29 on AMD SEV-SNP"
+    "color": "brightgreen",
+    "message": "proven 2026-10-29 15:07Z on AMD Milan, 262 s"
   }
 }
