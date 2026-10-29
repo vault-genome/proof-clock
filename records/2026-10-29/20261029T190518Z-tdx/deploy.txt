@@ -1,0 +1,61 @@
+Vault Genome v0.13.0 → project rats-probe, as the signed-in account; the record goes to /home/runner/work/proof-clock/proof-clock/core/deploy/gcp/records/20261029T190518Z
+== 1. the verification tools
+  cosign: v2.6.5 (/home/runner/work/proof-clock/proof-clock/core/deploy/gcp/.tools/cosign);slsa-verifier: 2.7.1 (/home/runner/work/proof-clock/proof-clock/core/deploy/gcp/.tools/slsa-verifier)
+== 2. the release v0.13.0, verified before it runs anywhere
+  cosign: checksums-v0.13.0.txt signed by https://github.com/vault-genome/vaultgenome-core/.github/workflows/release.yml@refs/tags/v0.13.0 — Verified OK
+  checksums: 5 of 5 downloaded files are on the signed list
+  slsa-verifier: 5 of 5 provenances passed against github.com/vault-genome/vaultgenome-core@v0.13.0
+  tag: Good "git" signature for 164888036+Nikolaichuk7@users.noreply.github.com with ED25519 key SHA256:8semTUTf1WWEk/WrIjvAA09PltKOJpiH5hjo1Gmb670
+== 3. the project
+  one c3-standard-4 Confidential VM, Intel TDX, Ubuntu 24.04, 20 GB disk: about USD 0.25 an hour (Google's C3 price plus its TDX premium) while it runs; destroy.sh removes it
+== 4. the Confidential VM
+  clock-20261029190511 is up in us-central1-c; the guest is installing, then reboots once so the key files are sealed on a settled boot, then provisions and proves — about four minutes
+== 5. waiting for the guest's record (up to 25 minutes)
+
+  packages
+
+  packages
+
+  the release v0.13.0 from GitHub, held to the signed checksums list
+
+  the worker runtime from the hash-pinned locks
+
+  the worker runtime from the hash-pinned locks
+
+  the worker runtime from the hash-pinned locks
+
+  a base model for the first genome: the tiny one the reference deployment gat
+  installed; rebooting once so the key files are sealed on a settled boot (the
+  installed; rebooting once so the key files are sealed on a settled boot (the
+  installed; rebooting once so the key files are sealed on a settled boot (the
+  installed; rebooting once so the key files are sealed on a settled boot (the
+  installed; rebooting once so the key files are sealed on a settled boot (the
+  installed; rebooting once so the key files are sealed on a settled boot (the
+  installed; rebooting once so the key files are sealed on a settled boot (the
+  acpctl provision: keys, configurations, identities and pins, the key files s
+  the first genome: a LoRA fine-tune by vg_genome, sealed by acpctl into the g
+  the gate job over the Return Path
+
+  emit
+
+  the guest's record: 67229 bytes, sha256(b64)=a36b506fe35b73e04010986b732cf1fdf69f5d6f128a04095f33b64b419a9837 -> /home/runner/work/proof-clock/proof-clock/core/deploy/gcp/records/20261029T190518Z/guest
+== 6. what was proven
+PROVEN — Vault Genome v0.13.0 on clock-20261029190511 (us-central1-c, project rats-probe): c3-standard-4, Intel TDX
+  release      Good "git" signature for 164888036+Nikolaichuk7@users.noreply.github.com with ED25519 key SHA256:8semTUTf1WWEk/WrIjvAA09PltKOJpiH5hjo1Gmb670
+               the checksums list signed by release.yml@v0.13.0 (cosign); 5 of 5 files on the list; 5 of 5 SLSA provenances against the source tag
+               on the guest: 5 of 5 files fetched from GitHub are on the signed list it was given (guest/checksums-check.txt)
+  trust domain MRTD f21e6b48743fe14c…, RTMR0 14c3ab8f982e023d…, RTMR1 c9a5e3f38d22e52a…, RTMR2 1091ae683b2fdddf… — the firmware, its configuration, the kernel, initrd and command line in the hardware's own registers; the quote under the PCK chain to Intel's root, Intel's TCB info (FMSPC 00806f050000) and QE identity from PCS
+  identities   vault 6f13cd5184222202… = worker 6f13cd5184222202…: SHA-384 over MRTD and RTMR0–3 of this Trust Domain, read by each daemon and pinned by the other
+  key files    5 + 3 sealed to this host (tee.sealer auto: tpm2) — provision 7.6 s; sealed on a settled boot, after one reboot
+  services     sagvd ready 3s after its start, the worker's session opened 1s after the worker's (sagvd.service, acp-compute.service); paused 0.0 s for the audit read, back with the sealed key files opened again (ready 3s, session 0s)
+  gate         job 0ecfb324992cdf5b61f56101bf9dd8d9: EXACT at rung 0, 6 of 6 fixtures byte for byte (max_abs_err 0), the verdict signed by sagvd-authority-demo — 4.2 s from submission
+  audit log    ok=true, 16 events verified under the operator's key (records/20261029T190518Z/guest/audit-public-key.pem)
+  time         29.3 s on the guest from its first command to the sealed verdict; the record's hashes in guest/sha256sums.txt
+
+The deployment is running. Its record: /home/runner/work/proof-clock/proof-clock/core/deploy/gcp/records/20261029T190518Z
+  on the VM        gcloud compute ssh clock-20261029190511 --zone us-central1-c --project rats-probe
+  look             sudo vg health · sudo vg status · sudo vg logs sagvd
+  the audit log    sudo vg verify · sudo vg audit · sudo vg events 20   (the services pause for the read, about 15 s)
+  another job      sudo vg submit gen-0.genome gen-0.key
+  your own model   seal its genome with acpctl (docs/operator/09_first_deployment.md §4) into /var/lib/vaultgenome/genomes, then vg submit
+  remove it        /home/runner/work/proof-clock/proof-clock/core/deploy/gcp/destroy.sh --name clock-20261029190511 --zone us-central1-c --project rats-probe

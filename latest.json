@@ -1,9 +1,9 @@
 {
   "schema": "vault-genome/proof-clock/v1",
-  "generated_at": "2026-10-29T15:41:44Z",
+  "generated_at": "2026-10-29T19:10:43Z",
   "last_proven": {
     "date": "2026-10-29",
-    "stamp": "20261029T151031Z",
+    "stamp": "20261029T190518Z",
     "platform": "tdx",
     "status": "proven",
     "reason": "",
@@ -22,14 +22,14 @@
     "gate": "EXACT",
     "fixtures": 6,
     "n_exact": 6,
-    "button_to_record_s": 264.9,
-    "proven_at": "2026-10-29T15:14:55Z",
-    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40898771989",
-    "path": "records/2026-10-29/20261029T151031Z-tdx"
+    "button_to_record_s": 252.2,
+    "proven_at": "2026-10-29T19:09:30Z",
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40936819427",
+    "path": "records/2026-10-29/20261029T190518Z-tdx"
   },
   "last_run": {
     "date": "2026-10-29",
-    "stamp": "20261029T151031Z",
+    "stamp": "20261029T190518Z",
     "platform": "tdx",
     "status": "proven",
     "reason": "",
@@ -48,16 +48,16 @@
     "gate": "EXACT",
     "fixtures": 6,
     "n_exact": 6,
-    "button_to_record_s": 264.9,
-    "proven_at": "2026-10-29T15:14:55Z",
-    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40898771989",
-    "path": "records/2026-10-29/20261029T151031Z-tdx"
+    "button_to_record_s": 252.2,
+    "proven_at": "2026-10-29T19:09:30Z",
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/40936819427",
+    "path": "records/2026-10-29/20261029T190518Z-tdx"
   },
   "streak_days": 1,
   "days_proven": 1,
   "runs": {
-    "total": 3,
-    "proven": 2,
+    "total": 4,
+    "proven": 3,
     "not-exact": 0,
     "refused": 0,
     "no-capacity": 0,
@@ -78,9 +78,9 @@
       ]
     },
     "tdx": {
-      "runs": 1,
-      "proven": 1,
-      "last_proven_at": "2026-10-29T15:14:55Z",
+      "runs": 2,
+      "proven": 2,
+      "last_proven_at": "2026-10-29T19:09:30Z",
       "chips_seen": 0,
       "measurements_seen": 1,
       "firmware_seen": [],
@@ -96,6 +96,6 @@
     "schemaVersion": 1,
     "label": "proof clock",
     "color": "brightgreen",
-    "message": "proven 2026-10-29 15:14Z on Intel TDX, 264 s"
+    "message": "proven 2026-10-29 19:09Z on Intel TDX, 252 s"
   }
 }
