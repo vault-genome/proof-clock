@@ -1,0 +1,8 @@
+project=rats-probe
+instance=clock-20261030120915
+zone=us-central1-c
+machine=n2d-standard-4
+platform=sev-snp
+release=v0.14.0
+sealer=auto
+started=20261030T120927Z

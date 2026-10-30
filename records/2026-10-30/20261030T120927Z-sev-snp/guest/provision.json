@@ -1,0 +1,64 @@
+{
+  "schema": "vault-genome/acpctl-provision/v1",
+  "role": "both",
+  "phase": "complete",
+  "out": "/etc/vaultgenome",
+  "provider": "auto",
+  "peer_provider": "gcp-sev-snp",
+  "sealer": "auto",
+  "binaries": {
+    "acp-compute": "/opt/vaultgenome/bin/acp-compute",
+    "keygen": "/opt/vaultgenome/bin/acp-keygen",
+    "sagvd": "/opt/vaultgenome/bin/sagvd"
+  },
+  "secrets": "/etc/vaultgenome/secrets",
+  "configs": {
+    "acp-compute": "/etc/vaultgenome/acp-compute.json",
+    "sagvd": "/etc/vaultgenome/sagvd.json"
+  },
+  "configs_sha256": {
+    "acp-compute": "84baf6009dbc996ba216d51e2fad1da7abfdffad288ae384897170938efd1fcb",
+    "sagvd": "d6e9810e8e766979a915f3da4230e7c9066ebacdb5a55f91bc7b38d18aa088f5"
+  },
+  "pins": {
+    "vault": "/etc/vaultgenome/pins/vault.measurement",
+    "worker": "/etc/vaultgenome/pins/worker.measurement"
+  },
+  "amd_cert_chain": "/etc/vaultgenome/amd-milan-cert_chain.pem",
+  "vault": {
+    "provider": "gcp-sev-snp",
+    "measurement_hex": "9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf",
+    "sealer": "sev-snp-derived-key",
+    "audit_kid": "sagvd-audit-demo",
+    "audit_public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEACwtegzdjhzubBQ4be1Fz3h4HiIkQvlM3EFzwaCoiMMw=\n-----END PUBLIC KEY-----\n",
+    "authority_kid": "sagvd-authority-demo",
+    "authority_public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEARt8Zk04Kkx2E2ANY+Y2ziukPrCzwBsvCOK9CYKt6Arc=\n-----END PUBLIC KEY-----\n",
+    "identity_file": "/etc/vaultgenome/sagvd-identity.json"
+  },
+  "worker": {
+    "provider": "gcp-sev-snp",
+    "measurement_hex": "9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf",
+    "sealer": "sev-snp-derived-key",
+    "identity_file": "/etc/vaultgenome/acp-compute-identity.json"
+  },
+  "api_token_file": "/etc/vaultgenome/operator/api_token",
+  "sealed": {
+    "acp-compute": [
+      "keys.worker_signing.seed_path",
+      "keys.session_sealing.material_path",
+      "vault.tls.client_key"
+    ],
+    "sagvd": [
+      "keys.authority_signing.seed_path",
+      "keys.session_sealing.material_path",
+      "keys.audit_signing.seed_path",
+      "vault.tls.server_key",
+      "http_api.bearer_token_file"
+    ]
+  },
+  "next": [
+    "/opt/vaultgenome/bin/sagvd -config /etc/vaultgenome/sagvd.json",
+    "/opt/vaultgenome/bin/acp-compute -config /etc/vaultgenome/acp-compute.json",
+    "acpctl genome seal --content-dir \u003cgenome\u003e --output /var/lib/vaultgenome/genomes/gen-0.genome --key-out /var/lib/vaultgenome/genomes/gen-0.key"
+  ]
+}

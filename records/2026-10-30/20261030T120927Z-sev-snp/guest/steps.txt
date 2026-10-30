@@ -1,0 +1,35 @@
+platform=sev-snp sealer=auto settled_boot=0
+== packages
+== configfs-tsm: the hardware's reports
+== the release v0.14.0 from GitHub, held to the signed checksums list
+checksums_ok=5 of 5 downloaded files on the signed list
+== the worker runtime from the hash-pinned locks
+== a base model for the first genome: the tiny one the reference deployment gates
+== acpctl provision: keys, configurations, identities and pins, the key files sealed to this host
+provision exit=0
+provider=auto peer=gcp-sev-snp sealer=auto
+vault_measurement=9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf
+worker_measurement=9fc6d42b3005958a32056a75f2ecf1d28a5b9f2a3b5b93a9eb7a67e10be295c235f74fd6c4ab3522b9a588740708b8cf
+vault_sealer=sev-snp-derived-key worker_sealer=sev-snp-derived-key
+sealed_sagvd=keys.authority_signing.seed_path,keys.session_sealing.material_path,keys.audit_signing.seed_path,vault.tls.server_key,http_api.bearer_token_file
+sealed_worker=keys.worker_signing.seed_path,keys.session_sealing.material_path,vault.tls.client_key
+amd_cert_chain=/etc/vaultgenome/amd-milan-cert_chain.pem
+audit_kid=sagvd-audit-demo authority_kid=sagvd-authority-demo
+== the first genome: a LoRA fine-tune by vg_genome, sealed by acpctl into the genome directory
+finetune exit=0
+seal exit=0
+key_id=genome-7fe6d02153b5-g0-203c97c7366b
+== the daemons as systemd services
+sagvd_ready_after=17s
+session_opened_after=0s
+== the gate job over the Return Path
+job_id=3c4609618af920f384ffd5352ce71fee
+job_status=succeeded
+job_wait=5s
+gate_level=EXACT door=pinned replay rung=0 fixtures=6 n_exact=6 max_abs_err=0 signer=sagvd-authority-demo
+== metrics; then the audit log verified under the operator's key with both services paused, and the hardware as the verifier read it
+audit verify exit=0
+restart_sagvd_ready_after=11s
+restart_session_opened_after=11s
+peer chip product=Milan variant=Milan cpuid=0x19/0x1/0x1 snp=0x1f microcode=0xe1 firmware=1.58.3 alias_check=true mit_vector=0xfeb floor_snp=0x1b floor_microcode=0xde
+elapsed_seconds=153.5
