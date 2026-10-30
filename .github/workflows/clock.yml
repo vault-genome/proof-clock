@@ -4,8 +4,8 @@
 # The proof clock. Twice a day this workflow does what a stranger does with
 # the one-button deployment of vault-genome/vaultgenome-core: clones the
 # repository, runs deploy/gcp/deploy.sh against the latest release on a
-# real Confidential VM (AMD SEV-SNP at 06:00 UTC, Intel TDX at 18:00 UTC),
-# reads the guest's record, decides the status itself — proven only when
+# real Confidential VM (AMD SEV-SNP in the morning, Intel TDX in the evening,
+# UTC), reads the guest's record, decides the status itself — proven only when
 # the gate came back EXACT and the audit log replayed ok — removes the VM,
 # and commits the record and the counter to this repository.
 #
@@ -15,9 +15,13 @@
 name: clock
 
 on:
+  # Off the hour: GitHub says the start of every hour is when scheduled runs
+  # are delayed or dropped. It still starts them when it has room (4.5 and 6
+  # hours late on the first two, 2026-10-29/30), so a record's stamp is the
+  # time it ran; nothing here promises the minute.
   schedule:
-    - cron: "0 6 * * *"    # AMD SEV-SNP (n2d-standard-4)
-    - cron: "0 18 * * *"   # Intel TDX (c3-standard-4)
+    - cron: "17 6 * * *"    # AMD SEV-SNP (n2d-standard-4)
+    - cron: "17 18 * * *"   # Intel TDX (c3-standard-4)
   workflow_dispatch:
     inputs:
       platform:
@@ -66,7 +70,8 @@ jobs:
           IN_TAG: ${{ inputs.tag }}
         run: |
           if [ "$EVENT" = schedule ]; then
-            case "$SCHEDULE" in "0 18 * * *") platform=tdx;; *) platform=sev-snp;; esac
+            # By the hour, so a run queued under an earlier minute still picks its platform.
+            case "$SCHEDULE" in *" 18 * * *") platform=tdx;; *) platform=sev-snp;; esac
           else
             platform="${IN_PLATFORM:-sev-snp}"
           fi

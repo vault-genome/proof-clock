@@ -3,9 +3,11 @@
 Twice a day this repository does what a stranger does with the one-button
 deployment of [Vault Genome](https://github.com/vault-genome/vaultgenome-core):
 it clones the repository, runs `deploy/gcp/deploy.sh` against the latest
-release on a real Confidential VM in Google Cloud — AMD SEV-SNP at 06:00 UTC,
-Intel TDX at 18:00 UTC — waits for the guest's record, decides the status
-itself, removes the VM, and commits the record here.
+release on a real Confidential VM in Google Cloud — AMD SEV-SNP in the morning,
+Intel TDX in the evening, UTC — waits for the guest's record, decides the
+status itself, removes the VM, and commits the record here. The runs are
+scheduled for 06:17 and 18:17 UTC and GitHub starts them when it has room,
+sometimes hours later; each record's stamp says when it really ran.
 
 A release proven once is a claim. A release proven again every day, on a
 chip the clock did not choose, with the record published and checkable by
