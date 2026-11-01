@@ -1,0 +1,22 @@
+audit events:    16
+first event at:  2026-11-01T22:02:56Z
+last event at:   2026-11-01T22:03:00Z
+unique sessions: 1
+unique manifests:1
+kind histogram:
+  CANDIDATE_RECEIVED               1
+  DISCLOSURE_AUTHORIZED            5
+  MANIFEST_ISSUED                  1
+  RELEASE_DECIDED                  1
+  REQUEST_RECEIVED                 1
+  SESSION_ISSUED                   1
+  TRUST_EVALUATED                  1
+  VALIDATION_COMPLETED             1
+  VALIDATION_DIMENSION_EVALUATED   3
+  VALIDATION_STARTED               1
+most recent event:
+  event_id:    rp-flow-99661863-0000000000000006
+  kind:        RELEASE_DECIDED
+  occurred_at: 2026-11-01T22:03:00Z
+  session_id:  ses-99661863-0000000000000001
+  manifest_id: rjm-c04acf40b477404e

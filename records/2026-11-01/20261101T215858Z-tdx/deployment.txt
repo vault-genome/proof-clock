@@ -1,0 +1,8 @@
+project=rats-probe
+instance=clock-20261101215847
+zone=us-central1-c
+machine=c3-standard-4
+platform=tdx
+release=v0.14.0
+sealer=auto
+started=20261101T215858Z
