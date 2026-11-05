@@ -1,0 +1,23 @@
+{
+  "signing_kid": "acp-compute-worker-demo",
+  "signing_public_key_hex": "3d1de3766939b3d71c07a19ba1f30b2b4d2867af106f516e39fdd51ac7debe92",
+  "signing_public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAPR3jdmk5s9ccB6GbofMLK00oZ68Qb1FuOf3VGsfevpI=\n-----END PUBLIC KEY-----\n",
+  "signing_signature_suite": "ed25519",
+  "tee_provider": "gcp-tdx",
+  "tee_measurement_hex": "0eeca3830825ab02553ae96e9d81827dfe4de8e45fa91137bc08d02bc5517024016c37cfcec3b611d1176819ccad9a6c",
+  "sealer": "tpm2",
+  "fips140": {
+    "enabled": false,
+    "enforced": false,
+    "version": "latest"
+  },
+  "tdx": {
+    "mrtd_hex": "f21e6b48743fe14c2d090078ca1197f09ae4c99438677f2c79901ef80e2aeefe2f9a7eb6e3eb3b5047c4f1511731e5d3",
+    "rtmr_hex": [
+      "b2458d277f30296eea1504f7e8168ea472831daa8b11eff3750f47f13acfdbf01fce353002b5c7d740a21fadfd335559",
+      "7335aa6774a0c177c86174c5a360435fbe8dd367cba4ff3a63edc6151c75a9a1a0b986e6ffb391ad5b429af65707b976",
+      "e7ea1a58639c01c09e360e676c2b79824caf436ee5a9f783dbbdcffffeb1315d1d6761ae9a6c7e33f0007014aed5262a",
+      "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    ]
+  }
+}
