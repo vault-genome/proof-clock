@@ -1,6 +1,6 @@
 {
   "schema": "vault-genome/proof-clock/v1",
-  "generated_at": "2026-11-04T23:50:15Z",
+  "generated_at": "2026-11-05T14:35:07Z",
   "last_proven": {
     "date": "2026-11-04",
     "stamp": "20261104T233814Z",
@@ -28,44 +28,44 @@
     "path": "records/2026-11-04/20261104T233814Z-tdx"
   },
   "last_run": {
-    "date": "2026-11-04",
-    "stamp": "20261104T233814Z",
-    "platform": "tdx",
-    "status": "proven",
-    "reason": "",
+    "date": "2026-11-05",
+    "stamp": "20261105T143426Z",
+    "platform": "sev-snp",
+    "status": "failed",
+    "reason": "could not download cosign from https://github.com/sigstore/cosign/releases/download/v2.6.5/cosign-linux-amd64",
     "release": "v0.14.0",
-    "zone": "us-central1-c",
-    "machine": "c3-standard-4",
-    "chip": "Intel TDX",
+    "zone": null,
+    "machine": null,
+    "chip": "AMD SEV-SNP",
     "firmware": null,
     "chip_id": null,
     "tcb": null,
-    "fmspc": "00806f050000",
-    "mrtd": "f21e6b48743fe14c2d090078ca1197f09ae4c99438677f2c79901ef80e2aeefe2f9a7eb6e3eb3b5047c4f1511731e5d3",
-    "settled_boot": true,
-    "sealer": "tpm2",
-    "measurement": "6f13cd51842222020420284862e2d5345057860ca445c48b0d50663374e41800abca08e5e4a05663d01647bfc2918a55",
-    "gate": "EXACT",
-    "fixtures": 6,
-    "n_exact": 6,
-    "button_to_record_s": 644.4,
-    "proven_at": "2026-11-04T23:48:58Z",
-    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/41935241818",
-    "path": "records/2026-11-04/20261104T233814Z-tdx"
+    "fmspc": null,
+    "mrtd": null,
+    "settled_boot": null,
+    "sealer": null,
+    "measurement": null,
+    "gate": null,
+    "fixtures": null,
+    "n_exact": null,
+    "button_to_record_s": null,
+    "proven_at": null,
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/42046284880",
+    "path": "records/2026-11-05/20261105T143426Z-sev-snp"
   },
   "streak_days": 7,
   "days_proven": 7,
   "runs": {
-    "total": 17,
+    "total": 18,
     "proven": 16,
     "not-exact": 0,
     "refused": 0,
     "no-capacity": 0,
-    "failed": 1
+    "failed": 2
   },
   "by_platform": {
     "sev-snp": {
-      "runs": 8,
+      "runs": 9,
       "proven": 7,
       "last_proven_at": "2026-11-04T14:30:40Z",
       "chips_seen": 2,
@@ -98,7 +98,7 @@
   "badge": {
     "schemaVersion": 1,
     "label": "proof clock",
-    "color": "brightgreen",
-    "message": "proven 2026-11-04 23:48Z on Intel TDX, 644 s"
+    "color": "red",
+    "message": "failed 2026-11-05 on AMD SEV-SNP"
   }
 }

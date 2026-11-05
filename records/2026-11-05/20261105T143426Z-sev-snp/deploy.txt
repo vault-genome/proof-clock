@@ -1,0 +1,7 @@
+Vault Genome v0.14.0 → project rats-probe, as the signed-in account; the record goes to /home/runner/work/proof-clock/proof-clock/core/deploy/gcp/records/20261105T143443Z
+== 1. the verification tools
+curl: (22) The requested URL returned error: 504
+curl: (22) The requested URL returned error: 504
+curl: (22) The requested URL returned error: 504
+curl: (22) The requested URL returned error: 504
+ERROR: could not download cosign from https://github.com/sigstore/cosign/releases/download/v2.6.5/cosign-linux-amd64
