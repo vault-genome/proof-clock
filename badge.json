@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
   "label": "proof clock",
-  "color": "red",
-  "message": "failed 2026-11-05 on AMD SEV-SNP"
+  "color": "brightgreen",
+  "message": "proven 2026-11-05 14:48Z on AMD Milan, 384 s"
 }
