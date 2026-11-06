@@ -1,0 +1,14 @@
+total 0
+drwxr-xr-x 2 root root 0 Nov  6 14:12 .
+drwxr-xr-x 3 root root 0 Nov  6 14:12 ..
+ls: cannot access '/dev/tdx_guest': No such file or directory
+crw------- 1 root root  10,   260 Nov  6 14:12 /dev/sev-guest
+crw------- 1 root root 252, 65536 Nov  6 14:12 /dev/tpmrm0
+model name	: AMD EPYC 7B13
+[    0.780903] Memory Encryption Features active: AMD SEV SEV-ES SEV-SNP
+[    0.781627] SEV: Status: SEV SEV-ES SEV-SNP 
+[    0.903638] SEV: APIC: wakeup_secondary_cpu() replaced with wakeup_cpu_via_vmgexit()
+[    0.994715] SEV: Using SNP CPUID table, 57 entries present.
+[    0.994718] SEV: SNP running at VMPL0.
+[    1.341680] SEV: SNP guest platform devices initialized.
+[    1.534608] sev-guest sev-guest: Initialized SEV guest driver (using VMPCK0 communication key)
