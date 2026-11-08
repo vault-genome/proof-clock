@@ -1,0 +1,8 @@
+sagvd/authority_signing_seed {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'keys.authority_signing.seed_path', 'sealed_bytes': 80}
+sagvd/audit_signing_seed {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'keys.audit_signing.seed_path', 'sealed_bytes': 80}
+sagvd/api_token {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'http_api.bearer_token_file', 'sealed_bytes': 124}
+sagvd/tls/server.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'vault.tls.server_key', 'sealed_bytes': 360}
+shared/sealing.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'keys.session_sealing.material_path', 'sealed_bytes': 80}
+acp-compute/sealing.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'keys.session_sealing.material_path', 'sealed_bytes': 80}
+acp-compute/worker_signing_seed {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'keys.worker_signing.seed_path', 'sealed_bytes': 80}
+acp-compute/tls/client.key {'schema': 'vault-genome/sealed-secret/v1', 'tee': 'gcp-sev-snp', 'sealer': 'sev-snp-derived-key', 'name': 'vault.tls.client_key', 'sealed_bytes': 360}
