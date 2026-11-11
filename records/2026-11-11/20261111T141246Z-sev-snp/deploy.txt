@@ -1,0 +1,20 @@
+Vault Genome v0.14.0 → project rats-probe, as the signed-in account; the record goes to /home/runner/work/proof-clock/proof-clock/core/deploy/gcp/records/20261111T141257Z
+== 1. the verification tools
+  cosign: v2.6.5 (/home/runner/work/proof-clock/proof-clock/core/deploy/gcp/.tools/cosign);slsa-verifier: 2.7.1 (/home/runner/work/proof-clock/proof-clock/core/deploy/gcp/.tools/slsa-verifier)
+== 2. the release v0.14.0, verified before it runs anywhere
+  cosign: checksums-v0.14.0.txt signed by https://github.com/vault-genome/vaultgenome-core/.github/workflows/release.yml@refs/tags/v0.14.0 — Verified OK
+  checksums: 5 of 5 downloaded files are on the signed list
+  slsa-verifier: 5 of 5 provenances passed against github.com/vault-genome/vaultgenome-core@v0.14.0
+  tag: Good "git" signature for 164888036+Nikolaichuk7@users.noreply.github.com with ED25519 key SHA256:8semTUTf1WWEk/WrIjvAA09PltKOJpiH5hjo1Gmb670
+== 3. the project
+  one n2d-standard-4 Confidential VM, AMD Milan, SEV-SNP, Ubuntu 24.04, 20 GB disk: about USD 0.20 an hour (Google's N2D price plus its SEV-SNP premium) while it runs; destroy.sh removes it
+== 4. the Confidential VM
+WARNING: You have selected a disk size of under [200GB]. This may result in poor I/O performance. For more information, see: https://developers.google.com/compute/docs/disks#performance.
+ERROR: (gcloud.compute.instances.create) Could not fetch resource:
+ - Quota 'N2D_CPUS' exceeded.  Limit: 16.0 in region us-central1.
+	metric name = compute.googleapis.com/n2d_cpus
+	limit name = N2D-CPUS-per-project-region
+	limit = 16.0
+	dimensions = region: us-central1
+Try your request in another zone, or view documentation on how to increase quotas: https://cloud.google.com/compute/quotas.
+ERROR: could not create clock-20261111141246 in us-central1-c

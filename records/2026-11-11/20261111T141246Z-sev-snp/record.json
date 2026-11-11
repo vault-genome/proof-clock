@@ -1,0 +1,79 @@
+{
+  "schema": "vault-genome/proof-clock-record/v1",
+  "date": "2026-11-11",
+  "stamp": "20261111T141246Z",
+  "platform": "sev-snp",
+  "status": "failed",
+  "reason": "could not create clock-20261111141246 in us-central1-c",
+  "proven_at": null,
+  "release": {
+    "tag": "v0.14.0",
+    "commit": null,
+    "checksums_list_sha256": "3371626d5c9f09620650d5771bbdf5c33989129dde813eea3cdd42925f9a2f2e",
+    "cosign": "Verified OK",
+    "checksums_ok": 5,
+    "slsa_passed": 5,
+    "tag_signature": "Good \"git\" signature for 164888036+Nikolaichuk7@users.noreply.github.com with ED25519 key SHA256:8semTUTf1WWEk/WrIjvAA09PltKOJpiH5hjo1Gmb670",
+    "guest_checksums_ok": null
+  },
+  "cloud": {
+    "provider": "gcp",
+    "zone": null,
+    "region": null,
+    "machine": null,
+    "instance": null
+  },
+  "chip": null,
+  "measurement": null,
+  "measurements_equal": null,
+  "sealer": {
+    "vault": null,
+    "worker": null,
+    "requested": null
+  },
+  "sealed_files": null,
+  "settled_boot": null,
+  "gate": null,
+  "audit": null,
+  "timing": {
+    "deploy_started_at": "2026-11-11T14:12:46Z",
+    "guest_boot_at": null,
+    "guest_finished_at": null,
+    "button_to_record_s": null,
+    "boot_to_verdict_s": null,
+    "guest_elapsed_s": null,
+    "provision_s": null,
+    "job_s": null,
+    "sagvd_ready_after": null,
+    "session_opened_after": null
+  },
+  "guest_blob": null,
+  "run": {
+    "repository": "vault-genome/proof-clock",
+    "id": "43036272779",
+    "attempt": "1",
+    "url": "https://github.com/vault-genome/proof-clock/actions/runs/43036272779",
+    "event": "schedule",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20261101.360.1",
+    "started_at": "2026-11-11T14:12:46Z",
+    "finished_at": "2026-11-11T14:13:20Z",
+    "core_commit": "f7543fdebe596d9a56a000d3f8a50039deca5a74",
+    "deploy_rc": 1,
+    "tools": {
+      "cosign": "v2.6.5",
+      "slsa-verifier": "2.7.1",
+      "gcloud": "Google Cloud SDK 591.0.0"
+    }
+  },
+  "files": {
+    "deploy.txt": "a2104ad200307d58907bf578cad25b9c962ed395d8c920ac1bd3e4a01e89078f",
+    "verify/tag.txt": "80c1f7ac671d2bce3487aa57719b861977055d2d5d4f5fd9ce057e74978612aa",
+    "verify/assets.sha256": "87bf10660a079340c4f71ce9ae06bc7548332481635d0bfbd47dad7ed3c2619d",
+    "verify/cosign.txt": "80a53f76c7ed6969dade3b6ee47cdb753162db7c00be625448999d08bae77ed8",
+    "verify/slsa.txt": "6ada6e7b956efd7b1fe724bdbaf7a1798b681b1cfeb80a26e263280dd96e7fe9",
+    "verify/tools.txt": "071c869ba9dd485a23f9bf171eee47fb7b9330afb609d669533511ad4ff5baa2",
+    "verify/checksums.txt": "8a64407bc9f150d3dba9225c46dcd8583086afa2f991301c4cbdca3f4d807b2e"
+  },
+  "headline": "2026-11-11 sev-snp: failed v0.14.0 \u2014 could not create clock-20261111141246 in us-central1-c"
+}
