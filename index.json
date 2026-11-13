@@ -1,5 +1,36 @@
 [
   {
+    "date": "2026-11-13",
+    "stamp": "20261113T143010Z",
+    "platform": "sev-snp",
+    "status": "proven",
+    "reason": "",
+    "release": "v0.14.0",
+    "zone": "us-central1-c",
+    "machine": "n2d-standard-4",
+    "chip": "AMD Milan",
+    "firmware": "1.58.3",
+    "chip_id": "047e92b9ba19d77d537ea0ec083bedbb3f3cd7a998a29038a21addf8cc85cc22ea1f59f45e15e9643d77d1b8b496db107c8d5336e5ed2d5d8a7a07736a8a89d1",
+    "tcb": {
+      "bootloader": 4,
+      "microcode": 225,
+      "snp": 31,
+      "tee": 0
+    },
+    "fmspc": null,
+    "mrtd": null,
+    "settled_boot": false,
+    "sealer": "sev-snp-derived-key",
+    "measurement": "2279d213af547f03377a189d6e0c949eef1c2d1796eb276f2f75d3cbd97979a97d3884e01d9596b1c9303528c0de9f3b",
+    "gate": "EXACT",
+    "fixtures": 6,
+    "n_exact": 6,
+    "button_to_record_s": 234.3,
+    "proven_at": "2026-11-13T14:34:04Z",
+    "run_url": "https://github.com/vault-genome/proof-clock/actions/runs/43443213569",
+    "path": "records/2026-11-13/20261113T143010Z-sev-snp"
+  },
+  {
     "date": "2026-11-12",
     "stamp": "20261112T233512Z",
     "platform": "tdx",
