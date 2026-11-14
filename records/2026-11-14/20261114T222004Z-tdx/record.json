@@ -1,0 +1,157 @@
+{
+  "schema": "vault-genome/proof-clock-record/v1",
+  "date": "2026-11-14",
+  "stamp": "20261114T222004Z",
+  "platform": "tdx",
+  "status": "proven",
+  "reason": "",
+  "proven_at": "2026-11-14T22:24:25Z",
+  "release": {
+    "tag": "v0.14.0",
+    "commit": "3c5e632c4ea2f1bc78352f415c15b0c97d9b28ca",
+    "checksums_list_sha256": "3371626d5c9f09620650d5771bbdf5c33989129dde813eea3cdd42925f9a2f2e",
+    "cosign": "Verified OK",
+    "checksums_ok": 5,
+    "slsa_passed": 5,
+    "tag_signature": "Good \"git\" signature for 164888036+Nikolaichuk7@users.noreply.github.com with ED25519 key SHA256:8semTUTf1WWEk/WrIjvAA09PltKOJpiH5hjo1Gmb670",
+    "guest_checksums_ok": "5"
+  },
+  "cloud": {
+    "provider": "gcp",
+    "zone": "us-central1-c",
+    "region": "us-central1",
+    "machine": "c3-standard-4",
+    "instance": "clock-20261114221954"
+  },
+  "chip": {
+    "vendor": "Intel",
+    "product": "TDX",
+    "mrtd_hex": "f21e6b48743fe14c2d090078ca1197f09ae4c99438677f2c79901ef80e2aeefe2f9a7eb6e3eb3b5047c4f1511731e5d3",
+    "rtmr_hex": [
+      "8847ec5d4441a3e41856f9de32c21676a788060c2746c565aee58b90a882fd427e9e45487dd992cd87eaf0b2fcdfee68",
+      "38557f08f8a9682a13d4cd1aae64cc4c07f73e6487b8bfbf5b45b46b5bc4c9106008830f16bedc74de9553f00b7cd55a",
+      "f44ab17ac6a021b3eb9207a512e7d9e2beab23d0ce8882cb5f5c0f90d236a2d065e70b0528c902a64dceaf9d3e81c8fc",
+      "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "fmspc": "00806f050000",
+    "pcs_documents": [
+      "tdx-qe-identity.issuer-chain.pem",
+      "tdx-qe-identity.json",
+      "tdx-tcb-00806f050000.issuer-chain.pem",
+      "tdx-tcb-00806f050000.json"
+    ]
+  },
+  "measurement": "b72e2dcaed0ad8ba569e0a1cb0f6ac1338ebb8c4e2cc90237183df3188e23f719020fc25036c20931817b394386edeb5",
+  "measurements_equal": true,
+  "sealer": {
+    "vault": "tpm2",
+    "worker": "tpm2",
+    "requested": "auto"
+  },
+  "sealed_files": {
+    "acp-compute": 3,
+    "sagvd": 5
+  },
+  "settled_boot": true,
+  "gate": {
+    "level": "EXACT",
+    "door": "pinned replay",
+    "rung": 0,
+    "kind": "pinned-replay",
+    "fixtures": 6,
+    "n_exact": 6,
+    "n_equivalent": 0,
+    "n_mismatch": 0,
+    "max_abs_err": 0,
+    "fixtures_hash": "3bf5b0be62b14a466f39cb10ccdb861dce20195ce885af0d216a07646bdcfac1",
+    "genome_id": "genome-a9a1a64f4f65-g0-18a64b26984f",
+    "signer_key_id": "sagvd-authority-demo",
+    "signer_pub": "vLPbJDU2zl7P76lbVkW4exSud7BUUJGYFA9bdHCZqss=",
+    "signature": "PyxaRywtq+M2izkdfgkScJTrYev+hPdEmPd/MFgPvIb8QIBFWTe8XLh9rmIJELZiq7mrnm08pvIPnkjF292yDA==",
+    "job_id": "0d2bd7e2ea0ff066a4eec6becbc94d72",
+    "job_status": "succeeded"
+  },
+  "audit": {
+    "ok": true,
+    "events": 16,
+    "tip": "cd5cce3d542dc49e165c648b47dc5174c371a82a74c39069ab3a46b844c53d65",
+    "kid": "sagvd-audit-demo",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAwqHUaZdrBrqlIpaOrKVe3mnlUQ9GcZC1hzTo6pVUPEM=\n-----END PUBLIC KEY-----\n"
+  },
+  "timing": {
+    "deploy_started_at": "2026-11-14T22:20:04Z",
+    "guest_boot_at": "2026-11-14T22:21:09Z",
+    "guest_finished_at": "2026-11-14T22:24:25Z",
+    "button_to_record_s": 261.5,
+    "boot_to_verdict_s": 193.3,
+    "guest_elapsed_s": 30.2,
+    "provision_s": 8.0,
+    "job_s": 4.2,
+    "sagvd_ready_after": "3s",
+    "session_opened_after": "1s"
+  },
+  "guest_blob": {
+    "stamp": "20261114T222004Z",
+    "b64_sha256": "2acd130d044fbb00c1259c793963d9b2874d8771b87aac6e18062d540a99800e",
+    "tgz_sha256": "f68e0b284d69fdea846930796504a8302f559cdd557aeebb68a05c48fafea9c0",
+    "tgz_bytes": 67288,
+    "unpacked_hashes_ok": true
+  },
+  "run": {
+    "repository": "vault-genome/proof-clock",
+    "id": "43647504303",
+    "attempt": "1",
+    "url": "https://github.com/vault-genome/proof-clock/actions/runs/43647504303",
+    "event": "schedule",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20261111.370.1",
+    "started_at": "2026-11-14T22:19:54Z",
+    "finished_at": "2026-11-14T22:24:46Z",
+    "core_commit": "f7543fdebe596d9a56a000d3f8a50039deca5a74",
+    "deploy_rc": 0,
+    "tools": {
+      "cosign": "v2.6.5",
+      "slsa-verifier": "2.7.1",
+      "gcloud": "Google Cloud SDK 593.0.0"
+    }
+  },
+  "files": {
+    "deploy.txt": "91149b39245d02698563ce59c4f36346561879af4059e94b5f381a8562ba67e5",
+    "guest.tgz": "f68e0b284d69fdea846930796504a8302f559cdd557aeebb68a05c48fafea9c0",
+    "deployment.txt": "0aea3a3e1e4b13a83a737dee899dd06c992ec4a30f60b32459f091f87e108930",
+    "verify/tag.txt": "80c1f7ac671d2bce3487aa57719b861977055d2d5d4f5fd9ce057e74978612aa",
+    "verify/slsa.txt": "6ada6e7b956efd7b1fe724bdbaf7a1798b681b1cfeb80a26e263280dd96e7fe9",
+    "verify/checksums.txt": "8a64407bc9f150d3dba9225c46dcd8583086afa2f991301c4cbdca3f4d807b2e",
+    "verify/tools.txt": "59f1e6affba4f8f397f95108872b77874c2536972db541e2a9f90fcbf70b966c",
+    "verify/assets.sha256": "87bf10660a079340c4f71ce9ae06bc7548332481635d0bfbd47dad7ed3c2619d",
+    "verify/cosign.txt": "80a53f76c7ed6969dade3b6ee47cdb753162db7c00be625448999d08bae77ed8",
+    "guest/status.txt": "fc32c4a3503e4c818cf387fd7374be06d99c6de1eb7d83869549678a0c4ec059",
+    "guest/sha256sums.txt": "1ddda92ccaba03a0ecab980b97f0517a933c19823d47b616a1e312f961be7775",
+    "guest/pcs-tdx-tcb-00806f050000.json": "1a2dd8ff001e9f7a4546467d83907db06d9892544fc936652fc3a4d835ae2def",
+    "guest/steps.txt": "175d18d56df1a56746d736ee2ec5427b360d134e30216aa9aa382fb5526b7d54",
+    "guest/audit-verify.json": "1cf896a309bf9354729c4e05a486c60b3a6a86f42edb580d1c8b2492c926c049",
+    "guest/chip.txt": "b3bbca9d61fb9981536f510b3b16b7fb8bcfdf16cc7a5823cae80267ede7d8ca",
+    "guest/runtime.txt": "18c969ee57148af326f1b1876df6350ddcc5e6a79b58df8ac3374da60cc2f47e",
+    "guest/metadata.txt": "402886565294ea1edf11ccc7166f0a87b0882e721b375f01042c9ef25089061a",
+    "guest/sealed-files.txt": "b83e54113443c72181807a218f5a3a3f40c4777d89ac10b71488d35a196dfe4d",
+    "guest/acp-compute-identity.json": "b2dfd0f5fae124ed23d3310298a5772b344276dffaf93dad939397c4886c7c0b",
+    "guest/tsm.txt": "3332075bdbe60433b9230c034d451ed7c78474df742e73de37e8d4cd39c6258f",
+    "guest/job-submit.json": "19dbe49bb599952ded804cd2607165305037c3533ab2ae2c9f794fbaee3cb4d2",
+    "guest/pcs-tdx-tcb-00806f050000.issuer-chain.pem": "c550544e4442d9be583a5eddd48df8ba0149ddeef40efd3737ebe0f885dc3711",
+    "guest/sagvd-identity.json": "3a0df7afddc49503bd0c53e926743e205ccb06a65d237341a1bd0fd472928ce3",
+    "guest/checksums-check.txt": "8a64407bc9f150d3dba9225c46dcd8583086afa2f991301c4cbdca3f4d807b2e",
+    "guest/pcs-tdx-qe-identity.json": "d2b4bfbe28e8f297eb53d8d859e9662f15f2adb85fc022bb0db3c6dc4f5fe0b1",
+    "guest/audit-events.jsonl": "03701b3466d198abedc3da21f70b45bd195cb1badb032867f453b302f0123d73",
+    "guest/provision.json": "0b556a63dc652efc551e87fe2d3b1957295d982609b180bdf0ef136ed36ac995",
+    "guest/inputs.sha256": "2370ec3dd902cdb223e4c37421c5211f29bb5043d68fadfebb736bd0ca4b4d32",
+    "guest/versions.txt": "71a9955b69bb09b3a8cde1e32abaf33692e0530d4c723b1d409cc4347e165aad",
+    "guest/job.json": "2da82781f4250e40355085661c607ee6fff068af898cc837f19785e7668c515c",
+    "guest/kernel.txt": "ab100870da27f7c8b17034fbc0f2b3ac352bce52d38881a905729c86f6b4a465",
+    "guest/audit-public-key.pem": "86833521b65135f7366bd27157485e8adf478291285c63eb3296a5274199c9f4",
+    "guest/finetune.json": "12d218c04bd7a0ce0d87cc0f07608f48268cf52647ea847ee28fe9c20be34d71",
+    "guest/seal.json": "513a44bf725ab44efd66f0798c62fdff0cc34c5f1e4b3d2200f35230620905ce",
+    "guest/timeline.txt": "fdc70b84bbfb38b3c615bba0b0bc033ccd893e0bc31126cd3043b481afc42f34",
+    "guest/pcs-tdx-qe-identity.issuer-chain.pem": "c550544e4442d9be583a5eddd48df8ba0149ddeef40efd3737ebe0f885dc3711"
+  },
+  "headline": "2026-11-14 tdx: proven v0.14.0 on Intel TDX (FMSPC 00806f050000), EXACT 6/6, 261 s"
+}
