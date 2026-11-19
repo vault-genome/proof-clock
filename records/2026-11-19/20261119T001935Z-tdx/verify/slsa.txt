@@ -1,0 +1,20 @@
+Verified build using builder "https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@refs/tags/v2.1.0" at commit 3c5e632c4ea2f1bc78352f415c15b0c97d9b28ca
+Verifying artifact sagvd: PASSED
+
+PASSED: SLSA verification passed
+Verified build using builder "https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@refs/tags/v2.1.0" at commit 3c5e632c4ea2f1bc78352f415c15b0c97d9b28ca
+Verifying artifact acp-compute: PASSED
+
+PASSED: SLSA verification passed
+Verified build using builder "https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@refs/tags/v2.1.0" at commit 3c5e632c4ea2f1bc78352f415c15b0c97d9b28ca
+Verifying artifact acpctl: PASSED
+
+PASSED: SLSA verification passed
+Verified build using builder "https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@refs/tags/v2.1.0" at commit 3c5e632c4ea2f1bc78352f415c15b0c97d9b28ca
+Verifying artifact acp-keygen: PASSED
+
+PASSED: SLSA verification passed
+Verified build using builder "https://github.com/slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@refs/tags/v2.1.0" at commit 3c5e632c4ea2f1bc78352f415c15b0c97d9b28ca
+Verifying artifact genome-worker-v0.14.0.tar.gz: PASSED
+
+PASSED: SLSA verification passed
