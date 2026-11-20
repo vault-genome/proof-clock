@@ -1,0 +1,1 @@
+peer chip product=Milan variant=Milan cpuid=0x19/0x1/0x1 snp=0x1f microcode=0xe1 firmware=1.58.3 alias_check=true mit_vector=0xfeb floor_snp=0x1b floor_microcode=0xde
