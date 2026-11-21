@@ -9,6 +9,13 @@
 # the gate came back EXACT and the audit log replayed ok — removes the VM,
 # and commits the record and the counter to this repository.
 #
+# The two tools of the verification, cosign and slsa-verifier, are kept in
+# the Actions cache from one run to the next. They are never trusted from
+# there: deploy.sh uses a tool only at the hash core pins and downloads it
+# afresh when the hash differs. The cache spares the download when GitHub's
+# release storage is down — 2026-11-05, four 504s in seven seconds, no VM
+# created, the day's proof on AMD SEV-SNP lost.
+#
 # Google Cloud trusts this run's OIDC token (Workload Identity Federation,
 # tools/gcp-setup.sh): no key anywhere. The three names it needs are
 # repository variables: GCP_PROJECT, GCP_SERVICE_ACCOUNT, GCP_WIF_PROVIDER.
@@ -91,6 +98,19 @@ jobs:
           git clone --quiet --depth 1 "https://github.com/$CORE_REPO" core
           echo "commit=$(git -C core rev-parse HEAD)" >> "$GITHUB_OUTPUT"
           git -C core log -1 --format='core main %H %cI'
+          # the cache key is the pair of hashes core pins for its tools, so a
+          # bump in core brings a new download, never a stale cache
+          pins="$(grep -o -E 'VG_(COSIGN|SLSA_VERIFIER)_SHA256=[0-9a-f]+' core/deploy/lib/verify-release.sh | cut -d= -f2 | cut -c1-16 | tr '\n' '-' | sed 's/-$//')"
+          [ -n "$pins" ] || pins="none-$(git -C core rev-parse --short HEAD)"
+          echo "tools_key=tools-$pins" >> "$GITHUB_OUTPUT"
+          echo "tools cache key: tools-$pins"
+
+      - name: the verifier's tools, from the last run (used only at the hashes core pins)
+        id: tools
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: core/deploy/gcp/.tools
+          key: ${{ steps.core.outputs.tools_key }}
 
       - name: Google Cloud, by this run's OIDC token
         id: auth
@@ -114,6 +134,21 @@ jobs:
           set -e
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           echo "deploy.sh exit $rc"
+
+      - name: the tools kept for the next run (only when deploy.sh fetched both and verified their hashes)
+        id: tools-fetched
+        if: always() && steps.tools.outputs.cache-hit != 'true'
+        run: |
+          if [ -x core/deploy/gcp/.tools/cosign ] && [ -x core/deploy/gcp/.tools/slsa-verifier ]; then
+            echo "save=yes" >> "$GITHUB_OUTPUT"; echo "both tools fetched and verified: kept"
+          else
+            echo "save=no" >> "$GITHUB_OUTPUT"; echo "tools not fetched this run: nothing kept"
+          fi
+      - uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        if: always() && steps.tools-fetched.outputs.save == 'yes'
+        with:
+          path: core/deploy/gcp/.tools
+          key: ${{ steps.core.outputs.tools_key }}
 
       - name: the record — the status decided here, the account's name replaced
         id: record
