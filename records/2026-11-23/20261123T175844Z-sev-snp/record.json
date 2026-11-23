@@ -1,0 +1,168 @@
+{
+  "schema": "vault-genome/proof-clock-record/v1",
+  "date": "2026-11-23",
+  "stamp": "20261123T175844Z",
+  "platform": "sev-snp",
+  "status": "proven",
+  "reason": "",
+  "proven_at": "2026-11-23T18:02:20Z",
+  "release": {
+    "tag": "v0.14.0",
+    "commit": "3c5e632c4ea2f1bc78352f415c15b0c97d9b28ca",
+    "checksums_list_sha256": "3371626d5c9f09620650d5771bbdf5c33989129dde813eea3cdd42925f9a2f2e",
+    "cosign": "Verified OK",
+    "checksums_ok": 5,
+    "slsa_passed": 5,
+    "tag_signature": "Good \"git\" signature for 164888036+Nikolaichuk7@users.noreply.github.com with ED25519 key SHA256:8semTUTf1WWEk/WrIjvAA09PltKOJpiH5hjo1Gmb670",
+    "guest_checksums_ok": "5"
+  },
+  "cloud": {
+    "provider": "gcp",
+    "zone": "us-central1-c",
+    "region": "us-central1",
+    "machine": "n2d-standard-4",
+    "instance": "clock-20261123175828"
+  },
+  "chip": {
+    "vendor": "AMD",
+    "product": "Milan",
+    "variant": "Milan",
+    "cpuid": {
+      "family": 25,
+      "model": 1,
+      "stepping": 1
+    },
+    "chip_id_hex": "5b24bd19e5d940d030fa6f6fb2233630feda576f547ef61f9b44bc8f3a92a547572d0514db128a98a3b20921340d510ea2521ccc21c76d58a3549349dbc7639a",
+    "tcb_reported": {
+      "bootloader": 4,
+      "microcode": 225,
+      "snp": 31,
+      "tee": 0
+    },
+    "tcb_committed": {
+      "bootloader": 4,
+      "microcode": 225,
+      "snp": 31,
+      "tee": 0
+    },
+    "firmware": "1.58.3",
+    "alias_check_complete": true,
+    "mitigation_vector_hex": "0xfeb",
+    "guest_policy_hex": "0x30000",
+    "platform_info_hex": "0x25",
+    "floor": {
+      "microcode": 222,
+      "snp": 27
+    },
+    "floor_source": "AMD bulletins read 2026-10-22 for Milan: AMD-SB-3020 (SNP 0x1B, mitigation vector bit 1; rev. 2026-02-23), AMD-SB-3027 (microcode 0xDE; rev. 2026-02-27), AMD-SB-3015 (ALIAS_CHECK_COMPLETE)"
+  },
+  "measurement": "2279d213af547f03377a189d6e0c949eef1c2d1796eb276f2f75d3cbd97979a97d3884e01d9596b1c9303528c0de9f3b",
+  "measurements_equal": true,
+  "sealer": {
+    "vault": "sev-snp-derived-key",
+    "worker": "sev-snp-derived-key",
+    "requested": "auto"
+  },
+  "sealed_files": {
+    "acp-compute": 3,
+    "sagvd": 5
+  },
+  "settled_boot": false,
+  "gate": {
+    "level": "EXACT",
+    "door": "pinned replay",
+    "rung": 0,
+    "kind": "pinned-replay",
+    "fixtures": 6,
+    "n_exact": 6,
+    "n_equivalent": 0,
+    "n_mismatch": 0,
+    "max_abs_err": 0,
+    "fixtures_hash": "7cb8a5b031a7a6d4a776778f26f8e17b5535607d52d3133f875faf304f50b5ab",
+    "genome_id": "genome-dd8972526021-g0-4a7f4a33fc3b",
+    "signer_key_id": "sagvd-authority-demo",
+    "signer_pub": "w97bzl9bE6gFcL++0XSoar3uMyk9UnkmsrYU91K0e0c=",
+    "signature": "EvSgyo1Ox4F4koKVmgQWneVb5TTsdH62FaEW2ZXWkGUDn3Wgdlmlh1FH4PSDiv/1rO0SL6xHDtRly7h6gjFmAg==",
+    "job_id": "5411bd6a3b32eecfc820de64b85e8b9e",
+    "job_status": "succeeded"
+  },
+  "audit": {
+    "ok": true,
+    "events": 16,
+    "tip": "2907b06933be95a153630ab35950ca31f8873876dd4410107294a698405faf52",
+    "kid": "sagvd-audit-demo",
+    "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAicvqhRwLT4FYG3+TNAf2pwD3VOnXdvc2IlySHvhkTmU=\n-----END PUBLIC KEY-----\n"
+  },
+  "timing": {
+    "deploy_started_at": "2026-11-23T17:58:44Z",
+    "guest_boot_at": "2026-11-23T18:00:25Z",
+    "guest_finished_at": "2026-11-23T18:02:20Z",
+    "button_to_record_s": 216.7,
+    "boot_to_verdict_s": 113.6,
+    "guest_elapsed_s": 114.9,
+    "provision_s": 0.3,
+    "job_s": 5.3,
+    "sagvd_ready_after": "1s",
+    "session_opened_after": "0s"
+  },
+  "guest_blob": {
+    "stamp": "20261123T175844Z",
+    "b64_sha256": "737736a4203290be8850f90e905aa0b8bcdef31f9fe79d5bf16c4826c36407c5",
+    "tgz_sha256": "e30084b030504eb964fd4959d19a662e96c87e6da0107b698d49ac57af140b4c",
+    "tgz_bytes": 20163,
+    "unpacked_hashes_ok": true
+  },
+  "run": {
+    "repository": "vault-genome/proof-clock",
+    "id": "45233318306",
+    "attempt": "1",
+    "url": "https://github.com/vault-genome/proof-clock/actions/runs/45233318306",
+    "event": "schedule",
+    "runner_image": "ubuntu24",
+    "runner_image_version": "20261116.133.1",
+    "started_at": "2026-11-23T17:58:28Z",
+    "finished_at": "2026-11-23T18:02:38Z",
+    "core_commit": "e544c73e62560ce5d361d24fc5645fa4b013b28e",
+    "deploy_rc": 0,
+    "tools": {
+      "cosign": "v2.6.5",
+      "slsa-verifier": "2.7.1",
+      "gcloud": "Google Cloud SDK 593.0.0"
+    }
+  },
+  "files": {
+    "deploy.txt": "5217687efa0fa6e5d6a5105defb5642420dae34e064984253c83170f95ceee5d",
+    "guest.tgz": "e30084b030504eb964fd4959d19a662e96c87e6da0107b698d49ac57af140b4c",
+    "deployment.txt": "f91fbc906c867c4944beac88fddb0cd44e4fad455109a07f9b2b3516a59c80ef",
+    "guest/steps.txt": "647fff190598db770d0abdacc6e5e58527499d2481c77f43430d98cd63ef72f6",
+    "guest/finetune.json": "48d7fb13db340ac57050dfabc226b0fefcc46443fe5b3e82d59f94f67cf2adc7",
+    "guest/versions.txt": "71a9955b69bb09b3a8cde1e32abaf33692e0530d4c723b1d409cc4347e165aad",
+    "guest/provision.json": "be0be839118b2367d9ed7f7abf19365b939cf64c478836404cec4044b73e462a",
+    "guest/runtime.txt": "18c969ee57148af326f1b1876df6350ddcc5e6a79b58df8ac3374da60cc2f47e",
+    "guest/sagvd-identity.json": "2d273130df97f8288ed42651edeee40af5fc38d969fa1790199cb30c6d3617cb",
+    "guest/acp-compute-identity.json": "8fde79dab967ce46effc769ad3faca5e6f74fe073ad641d168f99e268b1fdf52",
+    "guest/audit-events.jsonl": "9ae128abfedde25364dd29115f9a4f41bf5827afb2c7763fcec3f98f4306c601",
+    "guest/inputs.sha256": "2370ec3dd902cdb223e4c37421c5211f29bb5043d68fadfebb736bd0ca4b4d32",
+    "guest/metadata.txt": "7bdb40cfa27e4c4cb9b17a710e0f80705748ab07c48e89d925155c8c6b371f76",
+    "guest/job-submit.json": "12e2f03bb440a1f43644b9fb0696db9361ac422dcd1f021e3d609ba8ab7af8af",
+    "guest/audit-public-key.pem": "c78350a4259d38825a20233bbb7ccef65100a9588c378822200abe803d8ec35a",
+    "guest/sealed-files.txt": "a647b7df9d257b5eb7ea0ffb61c10b14cbf3131b421926ed2b7a91042bb35b62",
+    "guest/status.txt": "ff384af2a544107a5ca7b81dacf2e60adcf3c3f4c2dbd4d33c46af921cd129a5",
+    "guest/chip.txt": "989a05e75734fcec4a3683cfeeee0aa9113ab1ece5bca5491a0b9dea75774037",
+    "guest/kernel.txt": "a89a784a423ce1b5f9cfa883003ea65504c07f5521c0c10ef0fded5745c59d36",
+    "guest/tsm.txt": "8ce4b31cfd4af1d4d82b899a2e94588bf029f4ab0e57302f7495c799e1756826",
+    "guest/sha256sums.txt": "1d53d6f586ca3c49f28dfe1e66c9fb13bbc5c57e663d82a5f7929fcdb8056ba3",
+    "guest/audit-verify.json": "0df08d2ba45e7d2a7a95e33f0c9d0c33c8ee4871b46b6a2771ce9469cb26611a",
+    "guest/checksums-check.txt": "8a64407bc9f150d3dba9225c46dcd8583086afa2f991301c4cbdca3f4d807b2e",
+    "guest/seal.json": "538848dcfef39b9261f638db0fd5b88c29d462fc4793c2b7e57097553bb801af",
+    "guest/timeline.txt": "0b5c942b16f641d4c33c34a8a8227707b3e1cdeaaa44a83ccc231dab2e7c66b4",
+    "guest/job.json": "2c0747dacae0e3609a9a40b091a9026799bf730f043df79943a070d4007540a5",
+    "verify/cosign.txt": "80a53f76c7ed6969dade3b6ee47cdb753162db7c00be625448999d08bae77ed8",
+    "verify/slsa.txt": "6ada6e7b956efd7b1fe724bdbaf7a1798b681b1cfeb80a26e263280dd96e7fe9",
+    "verify/checksums.txt": "8a64407bc9f150d3dba9225c46dcd8583086afa2f991301c4cbdca3f4d807b2e",
+    "verify/assets.sha256": "87bf10660a079340c4f71ce9ae06bc7548332481635d0bfbd47dad7ed3c2619d",
+    "verify/tag.txt": "80c1f7ac671d2bce3487aa57719b861977055d2d5d4f5fd9ce057e74978612aa",
+    "verify/tools.txt": "850897ba3f779c6a841f8b61af366729277f65beabccc4791e0ec4647b753877"
+  },
+  "headline": "2026-11-23 sev-snp: proven v0.14.0 on AMD Milan, EXACT 6/6, 216 s"
+}
