@@ -1,0 +1,43 @@
+{
+  "authority_kid": "sagvd-authority-demo",
+  "authority_public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABsrF88F7HwOF//AM4bPdwPV8rtaoiRU41Xu1iy/fWrY=\n-----END PUBLIC KEY-----\n",
+  "authority_signature_suite": "ed25519",
+  "tee_provider": "gcp-tdx",
+  "tee_measurement_hex": "7d8fd94aa955c1327ef8b615c73b8cb9b6aec9535ea74b3a969b62860c345ab8eea1443ad18f77a548dce80507388168",
+  "sealer": "tpm2",
+  "tdx": {
+    "mrtd_hex": "f21e6b48743fe14c2d090078ca1197f09ae4c99438677f2c79901ef80e2aeefe2f9a7eb6e3eb3b5047c4f1511731e5d3",
+    "rtmr_hex": [
+      "424755f2e684e0c63f9c2793da59ae6bc31d90c3802b70a69434a4867b1d032f95e4892e608dbc6b1fdc6850f77907a4",
+      "74963fdf6295acf3098f65c2e59ea3bf381148ea205abd56b307ee28789c2a16afc19b21cc8df6f2703d9853ffa70f87",
+      "6b4d79b28dc658308cf8ffe2c1a36044ece3189a91589e5e7d279ea858bb8cdad33c934f7d7a355b625fe610bbe9b563",
+      "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    ]
+  },
+  "audit_kid": "sagvd-audit-demo",
+  "audit_public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAjh2cycLtlql403z4ZH217aga4EtLQr4ha861Dtj3riU=\n-----END PUBLIC KEY-----\n",
+  "audit_signature_suite": "ed25519",
+  "policy_version": "gate-policy/v1;atol=0.01;rtol=0.001;outliers=0",
+  "policy_profiles": [
+    "gate"
+  ],
+  "crypto_profile": "general",
+  "kem_suites": [
+    "hpke-x25519-v2",
+    "hpke-p384-v2",
+    "hpke-mlkem768-v2",
+    "hpke-mlkem1024-p384-v2",
+    "hpke-xwing-v2"
+  ],
+  "signature_suite": "ed25519",
+  "signature_suites": [
+    "ed25519",
+    "ecdsa-p384-sha384",
+    "ml-dsa-87"
+  ],
+  "fips140": {
+    "enabled": false,
+    "enforced": false,
+    "version": "latest"
+  }
+}
